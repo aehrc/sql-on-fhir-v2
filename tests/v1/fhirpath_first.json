@@ -66,11 +66,16 @@
         "resource": "Patient",
         "select": [
           {
-            "path": "identifier.first()"
+            "path": "identifier.first()",
+            "alias": "identifier"
           }
         ]
       },
-      "expect": []
+      "expect": [
+        {
+          "identifier": null
+        }
+      ]
     },
     {
       "title": "table level and field first() when empty",
@@ -78,11 +83,16 @@
         "resource": "Patient",
         "select": [
           {
-            "path": "name.first().prefix.first()"
+            "path": "name.first().prefix.first()",
+            "alias": "prefix"
           }
         ]
       },
-      "expect": []
+      "expect": [
+        {
+          "prefix": null
+        }
+      ]
     }
   ]
 }
