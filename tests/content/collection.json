@@ -8,11 +8,16 @@
         {
           "use": "official",
           "family": "f1.1",
-          "given": ["g1.1"]
+          "given": [
+            "g1.1"
+          ]
         },
         {
           "family": "f1.2",
-          "given": ["g1.2", "g1.3"]
+          "given": [
+            "g1.2",
+            "g1.3"
+          ]
         }
       ],
       "gender": "male",
@@ -29,12 +34,17 @@
       "name": [
         {
           "family": "f2.1",
-          "given": ["g2.1"]
+          "given": [
+            "g2.1"
+          ]
         },
         {
           "use": "official",
           "family": "f2.2",
-          "given": ["g2.2", "g2.3"]
+          "given": [
+            "g2.2",
+            "g2.3"
+          ]
         }
       ],
       "gender": "female",
@@ -53,13 +63,12 @@
           },
           {
             "alias": "last_name",
-            "path": "name.family",
-            "collection": true
+            "path": "name.family"
           },
           {
             "alias": "first_name",
             "path": "name.given",
-            "collection": true
+            "collection": false
           }
         ]
       },
@@ -89,13 +98,27 @@
       "expect": [
         {
           "id": "pt1",
-          "last_name": ["f1.1", "f1.2"],
-          "first_name": ["g1.1", "g1.2", "g1.3"]
+          "last_name": [
+            "f1.1",
+            "f1.2"
+          ],
+          "first_name": [
+            "g1.1",
+            "g1.2",
+            "g1.3"
+          ]
         },
         {
           "id": "pt2",
-          "last_name": ["f2.1", "f2.2"],
-          "first_name": ["g2.1", "g2.2", "g2.3"]
+          "last_name": [
+            "f2.1",
+            "f2.2"
+          ],
+          "first_name": [
+            "g2.1",
+            "g2.2",
+            "g2.3"
+          ]
         }
       ]
     }

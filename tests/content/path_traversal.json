@@ -55,9 +55,9 @@
       "title": "multiple segments, one level of nesting",
       "view": {
         "resource": "Observation",
-        "select": [{ "path": "code.coding.code" }]
+        "select": [{ "path": "code.coding.code", "collection": true}]
       },
-      "expect": [{ "code": "123" }]
+      "expect": [{ "code": ["123"]}]
     },
     {
       "title": "multiple segments, multiple level of nesting ",
