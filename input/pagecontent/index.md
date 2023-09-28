@@ -1,17 +1,17 @@
-_This is an evolution of the original "SQL on FHIR" draft, which can 
+_This is an evolution of the original "SQL on FHIR" draft, which can
 [still be found here](https://github.com/FHIR/sql-on-fhir-archived)._
 
 ### Intro
-The [FHIR®](https://hl7.org/fhir) standard is a great fit for RESTful and JSON-based 
+The [FHIR®](https://hl7.org/fhir) standard is a great fit for RESTful and JSON-based
 systems, helping make healthcare data liquidity real. This spec aims to take FHIR usage a step
-futher, making FHIR work well with familiar and efficient SQL engines and surrounding ecosystems. 
+futher, making FHIR work well with familiar and efficient SQL engines and surrounding ecosystems.
 
 We do this by creating simple, tabular *views* of the underlying FHIR data that are tailored
 to specific needs. Views are defined with [FHIRPath](https://hl7.org/fhirpath/) expressions in
 a logical structure to specify things like column aliases and unnested items.
 
 Let's start with a simple example, defining a "patient_demographics" view with the following
-[ViewDefinition](view-definition.html) structure:
+[ViewDefinition](StructureDefinition-ViewDefinition.html) structure:
 
 ```js
 {
@@ -19,11 +19,11 @@ Let's start with a simple example, defining a "patient_demographics" view with t
   "resource": "Patient",
   "description": "A view of simple patient demographics",
   "select": [
-    { "path": "id" },
+    { "path": "getResourceKey()", "alias": "id" },
     { "path": "gender" },
     {
       // Select nested fields from the first official name.
-      "from": "name.where(use = 'official').first()",
+      "forEach": "name.where(use = 'official').first()",
       "select": [
         {
           "path": "given.join(' ')",
@@ -39,17 +39,19 @@ Let's start with a simple example, defining a "patient_demographics" view with t
 }
 ```
 
-This will result in a table like this, which can be persistend and queried in your database of choice:
+This will result in a "patient_demographics" table that looks like this. The table can be persisted and queried
+in your database of choice, using the view name as the table name:
 
 | id | gender | given_name    | family_name |
 |----|--------|---------------|-------------|
 | 1  | female | Malvina Gerda | Vicario     |
 | 2  | male   | Yolotzin Adel | Bristow     |
 | 3  | other  | Jin Gomer     | Aarens      |
+{:.table-data}
 
 Such tabular views can be created for any FHIR resource, with
-[more examples here](view-definition.html#examples). See the 
-[View Definition page](view-definition.html) for details, and the
+[more examples here](artifacts.html#example-example-instances). See the
+[View Definition page](StructureDefinition-ViewDefinition.html) for details, and the
 [System Layers](layers.html) page for how views fit into a larger analytic ecosystem.
 
 ### Contributing
@@ -64,14 +66,14 @@ Contributors and early users are welcome! Here are some places to start:
 * Specification:
   * **[Purpose](purpose.html)**: Backround and purpose of this project
   * **[System Layers](layers.html)**: Conceptual layers in this specification
-  * **[View Definition](view-definition.html)**: A tabular projection of a FHIR resource
+  * **[View Definition](StructureDefinition-ViewDefinition.html)**: A tabular projection of a FHIR resource
   * **[JSON Schema Guidance](json_schema_guidance.html)**: Schema guidance for JSON-centered
     databases
   * **[Columnar Schema Guidance](columnar_schema_guidance.html)**: Schema guidance for columnar databases
   * **[Tech Matrix](tech-matrix.html)**: Database analysis
 * **[Artifacts](artifacts.html)**: Logical model
 
-## Principles 
+### Principles
 
 [Discussion](https://github.com/FHIR/sql-on-fhir-v2/discussions/44)
 

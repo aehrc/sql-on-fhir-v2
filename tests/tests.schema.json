@@ -11,6 +11,9 @@
     "description": {
       "type": "string"
     },
+    "allowExtendedFhirpath": {
+      "type": "boolean"
+    },
     "authors": {
       "type": "array",
       "items": {
@@ -31,7 +34,18 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["title", "view", "expect"],
+        "required": ["title", "view"],
+        "oneOf": [
+          {
+            "required": ["expect"]
+          },
+          {
+            "required": ["expectCount"]
+          },
+          {
+            "required": ["expectError"]
+          }
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -47,6 +61,12 @@
             "items": {
               "type": "object"
             }
+          },
+          "expectCount": {
+            "type": "number"
+          },
+          "expectError": {
+            "type": "boolean"
           }
         }
       }
@@ -62,16 +82,27 @@
           "items": { "$ref": "#/$defs/_item" }
         },
         "path": {
-          "type": "string"
+          "type": "string",
+          "format": "fhirpath-expression"
         },
         "alias": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "collection": {
+          "type": "boolean"
+        },
+        "from": {
+          "type": "string",
+          "format": "fhirpath-expression"
         },
         "forEach": {
-          "type": "string"
+          "type": "string",
+          "format": "fhirpath-expression"
         },
         "forEachOrNull": {
-          "type": "string"
+          "type": "string",
+          "format": "fhirpath-expression"
         },
         "union": {
           "type": "array",
@@ -101,7 +132,8 @@
           "type": "string"
         },
         "resource": {
-          "type": "string"
+          "type": "string",
+          "format": "fhirpath-expression"
         },
         "description": {
           "type": "string"
@@ -117,7 +149,8 @@
             "required": ["path"],
             "properties": {
               "path": {
-                "type": "string"
+                "type": "string",
+                "format": "fhirpath-expression"
               }
             }
           }

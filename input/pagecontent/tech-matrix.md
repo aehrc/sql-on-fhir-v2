@@ -6,7 +6,7 @@ JSON Database Features:
 |--------------|---------|----------|-----------|---------------------|----------------|-------------|
 | PostgreSQL   | yes     | yes      | yes       | yes                 | yes            | yes         |
 | MySQL        | yes     | yes      | yes       | yes                 | yes            | no          |
-| SQLLight     | yes     | no       | yes       | yes                 | no             | no          |
+| SQLight      | yes     | no       | yes       | yes                 | no             | no          |
 | ClickHouse   | yes     | yes      | yes       | yes                 | yes            | no          |
 | MSSQL        | yes     | no       | yes       | yes                 | no             | no          |
 | Oracle       | yes     | no       | yes       | yes                 | yes            | no          |
@@ -14,6 +14,7 @@ JSON Database Features:
 | Snowflake    | yes     | yes      | yes       | yes                 | no             | no          |
 | Athena SQL   | yes     | yes      | yes       | yes                 | no             | no          |
 | DuckDB       | no      | no       | yes       | no                  | no             | no          |
+{:.table-data}
 
 
 Schemas & Formats datatypes:
@@ -114,7 +115,7 @@ Details - https://clickhouse.com/blog/getting-data-into-clickhouse-part-2-json
 
 [json in mssql](https://learn.microsoft.com/en-us/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16)
 
-## SQLLight
+## SQLight
 
 ## Mongo
 
