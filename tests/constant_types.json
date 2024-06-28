@@ -1,5 +1,5 @@
 {
-  "title": "constant types",
+  "title": "constant_types",
   "description": "tests for all types of constants",
   "resources": [
     {
@@ -429,7 +429,7 @@
         "constant": [
           {
             "name": "id_time",
-            "valueDate": "2016-11-12"
+            "valueDateTime": "2016-11-12"
           }
         ],
         "select": [
@@ -442,7 +442,7 @@
               },
               {
                 "name": "bool",
-                "path": "identified.ofType(DateTime) = %id_time",
+                "path": "identified.ofType(dateTime) = %id_time",
                 "type": "boolean"
               }
             ]
@@ -523,7 +523,7 @@
         "constant": [
           {
             "name": "id",
-            "valueUuid": "id1"
+            "valueId": "id1"
           }
         ],
         "select": [
@@ -603,7 +603,7 @@
               },
               {
                 "name": "bool",
-                "path": "effective.ofType(Instant) = %eff",
+                "path": "effective.ofType(instant) = %eff",
                 "type": "boolean"
               }
             ]
@@ -641,7 +641,7 @@
         "constant": [
           {
             "name": "oid",
-            "valueUrl": "urn:oid:1.0"
+            "valueOid": "urn:oid:1.0"
           }
         ],
         "select": [
@@ -764,7 +764,7 @@
               },
               {
                 "name": "bool",
-                "path": "value.ofType(Time) = %t",
+                "path": "value.ofType(time) = %t",
                 "type": "boolean"
               }
             ]
