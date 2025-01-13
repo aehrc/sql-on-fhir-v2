@@ -1,7 +1,10 @@
 {
   "title": "fn_join",
   "description": "FHIRPath `join` function.",
-  "fhirVersion": ["5.0.0", "4.0.1"],
+  "fhirVersion": [
+    "5.0.0",
+    "4.0.1"
+  ],
   "resources": [
     {
       "resourceType": "Patient",
@@ -9,15 +12,24 @@
       "name": [
         {
           "use": "official",
-          "given": ["p1.g1", "p1.g2"]
+          "given": [
+            "p1.g1",
+            "p1.g2"
+          ]
         }
       ]
+    },
+    {
+      "resourceType": "Patient",
+      "id": "p2"
     }
   ],
   "tests": [
     {
       "title": "join with comma",
-      "tags": ["experimental"],
+      "tags": [
+        "experimental"
+      ],
       "view": {
         "resource": "Patient",
         "select": [
@@ -41,12 +53,18 @@
         {
           "id": "p1",
           "given": "p1.g1,p1.g2"
+        },
+        {
+          "id": "p2",
+          "given": null
         }
       ]
     },
     {
-      "title": "join with empty value",
-      "tags": ["experimental"],
+      "title": "join with empty separator",
+      "tags": [
+        "experimental"
+      ],
       "view": {
         "resource": "Patient",
         "select": [
@@ -70,12 +88,18 @@
         {
           "id": "p1",
           "given": "p1.g1p1.g2"
+        },
+        {
+          "id": "p2",
+          "given": null
         }
       ]
     },
     {
       "title": "join with no value - default to no separator",
-      "tags": ["experimental"],
+      "tags": [
+        "experimental"
+      ],
       "view": {
         "resource": "Patient",
         "select": [
@@ -99,6 +123,10 @@
         {
           "id": "p1",
           "given": "p1.g1p1.g2"
+        },
+        {
+          "id": "p2",
+          "given": null
         }
       ]
     }
